@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html, body {
+            margin: 0; padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            width: 100%; height:100%;
+            background-color: #fff;
+        }
+        button {
+            cursor: pointer;
+            padding: 4px 12px;
+            margin-top: 30px
+        }
+        #profile_base {
+            border: 1px solid rgb(209, 45, 45);
+            padding: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="profile_base"><div id="profile"></div> <button id="logout">Logout</button></div>
+    <script>
+        const profile = document.getElementById('profile');
+        const logout = document.getElementById('logout');
+        const user = JSON.parse(sessionStorage.getItem('User'));
+        const username = user.username;
+        profile.innerHTML = `Hello ${username}`;
+
+        logout.addEventListener('click', (e) => {
+            e.preventDefault();
+            sessionStorage.clear();
+            window.location = 'login.html'
+        })
+    </script>
+</body>
+</html>
